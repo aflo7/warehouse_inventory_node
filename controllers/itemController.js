@@ -76,7 +76,39 @@ exports.update_item_post = function (req, res, next) {
     result.serialNumber = req.body.serial
     result.quantity = req.body.quantity
     result.save()
-    res.redirect('/')
+    res.redirect("/")
   })
-  
 }
+
+// delete the Item from BIN items(where its referenced). also delete the item from ITEMS collection
+exports.delete_item_post = function (req, res, next) {
+  console.log(req.body.bin)
+  console.log(req.params.id)
+
+  Bin.findOne({ name: req.body.bin })
+    .populate("items")
+    .exec((err, binFound) => {
+      if (err) {
+        return next(err)
+      }
+
+      if (!binFound) {
+        return next(err)
+      }
+
+      // console.log(binFound['items'])
+      binFound["items"] = binFound["items"].filter((item) => {
+        return item.id != req.params.id
+      })
+      binFound.save()
+
+      Item.findByIdAndRemove(req.params.id, (err, itemDeleted) => {
+        if (err) {
+          return next(err)
+        }
+
+        res.redirect("/")
+      })
+    })
+}
+//62f8b30cda996ae94a3655bc

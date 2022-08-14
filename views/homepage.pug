@@ -4,7 +4,7 @@ block content
   h1="Inventory Homepage"
   p="- This website allows the user to CRUD items"
   p="- Items belong to different bins"
-  p="- There are 3 BIN types (large items, small items, and trash items)"
+  p="- There are 3 BIN types (large, small, and trash)"
 
 
   div.binWrapper Bins
@@ -17,13 +17,22 @@ block content
               th Name 
               th Quantity 
               th Serial
+              th Update
+              th Delete
             each item in largeBinItems
               tr
                 td #{item.name}
                 td #{item.quantity}
                 td #{item.serialNumber}
-            else 
-              div.emptyBin This bin is empty 
+                td 
+                  a(href=item.update) Update
+                td
+                  form(action=item.delete method='post')
+                    input(type='hidden' name='')
+                    input(type='hidden' name='bin' value='Large Bin')
+                    input(type='submit' value='Delete') 
+      else 
+        div.emptyBin This bin is empty 
 
       a(href=process.env.PREFIX + 'inventory/newItem/large')
         div.addItem ADD ITEM +
@@ -36,18 +45,27 @@ block content
             th Name 
             th Quantity 
             th Serial
+            th Update
+            th Delete
           each item in smallBinItems
             tr
               td #{item.name}
               td #{item.quantity}
               td #{item.serialNumber}
-          else 
-            div.emptyBin This bin is empty 
+              td 
+                a(href=item.update) Update
+              td
+                form(action=item.delete method='post')
+                  input(type='hidden' name='')
+                  input(type='hidden' name='bin' value='Small Bin')
+                  input(type='submit' value='Delete') 
+      else 
+        div.emptyBin This bin is empty 
       a(href=process.env.PREFIX + 'inventory/newItem/small')
         div.addItem ADD ITEM +
 
     div.trashItemsWrapper 
-      div.itemTitleSpan Items
+      div.itemTitleSpan Trash Items
       if trashBinItems
         table.itemTable
           tr 
@@ -55,6 +73,7 @@ block content
             th Quantity 
             th Serial
             th Update
+            th Delete
           each item in trashBinItems
             tr
               td #{item.name}
@@ -62,7 +81,12 @@ block content
               td #{item.serialNumber}
               td 
                 a(href=item.update) Update
-          else 
-            div.emptyBin This bin is empty 
+              td
+                form(action=item.delete method='post')
+                  input(type='hidden' name='')
+                  input(type='hidden' name='bin' value='Trash Bin')
+                  input(type='submit' value='Delete')   
+      else 
+        div.emptyBin This bin is empty 
       a(href=process.env.PREFIX + 'inventory/newItem/trash')
         div.addItem ADD ITEM +

@@ -7,4 +7,8 @@ const BinSchema = new Schema({
   items: [{type: Schema.Types.ObjectId, ref: 'Item'}]
 })
 
+BinSchema.virtual('getID').get(function() {
+  return this._id
+})
+
 module.exports = mongoose.model("Bin", BinSchema)

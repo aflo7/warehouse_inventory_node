@@ -11,4 +11,10 @@ ItemSchema.virtual('update').get(function () {
   return "/inventory/update/" + this._id
 })
 
+
+ItemSchema.virtual('delete').get(function () {
+  return "/inventory/delete/" + this._id
+})
+
 module.exports = mongoose.model("Item", ItemSchema)
+

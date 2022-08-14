@@ -16,5 +16,7 @@ router.post("/newItem", itemController.add_item_post)
 router.post('/update/', itemController.update_item_post) 
 router.get('/update/:id', itemController.update_item_get)
 
+router.post('/delete/:id', itemController.delete_item_post)
+
 
 module.exports = router

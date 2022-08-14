@@ -1,0 +1,135 @@
+body {
+  padding: 50px;
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(57, 57, 57);
+  color: white;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.binWrapper {
+  font-size: 24pt;
+}
+
+.largeItemsWrapper {
+  color: rgb(76, 255, 76);
+
+ font-size: 20pt;
+ border: 1px solid white;
+ padding: 20px;
+
+ margin-bottom: 10px;
+}
+
+.smallItemsWrapper {
+  color: rgb(115, 115, 255);
+  font-size: 20pt;
+ border: 1px solid white;
+ padding: 20px;
+
+ margin-bottom: 10px;
+
+}
+
+.trashItemsWrapper {
+  color: red;
+  font-size: 20pt;
+ border: 1px solid white;
+ padding: 20px;
+
+
+}
+
+.addItem {
+  cursor: pointer;
+  font-size: 10pt;
+  background-color: rgb(255, 196, 88);
+  color: black;
+  padding: 5px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.addItem:hover{
+  color: #00B7FF;
+}
+
+.smallBinTextSpan  {
+  color: rgb(115, 115, 255);
+
+}
+
+.largeBinTextSpan {
+  color: rgb(76, 255, 76);
+
+  
+}
+
+.trashBinTextSpan {
+  color: red;
+
+}
+.newItemFormWrapper {
+ display: flex;
+ flex-direction: column;
+ border: 2px solid white;
+ padding: 15px;
+}
+
+.newItemLabel {
+padding: 10px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.submitInput {
+  font-size: 14pt;
+  width: fit-content;
+  padding: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.updateFormLabel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+
+
+
+.itemTable {
+width: 100%;
+}
+
+th {
+  text-align: left;
+  color: white;
+}
+
+
+
+th, td {
+  border:1px solid white;
+  font-size: 16pt;
+  padding: 3px;
+}
+.itemTitleSpan {
+  text-align: center;
+  padding: 10px;
+}
+
+.updateFormWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+

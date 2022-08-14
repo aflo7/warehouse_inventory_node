@@ -1,0 +1,19 @@
+extends layout 
+block content 
+  h1= "Update!"
+
+  if itemID
+
+    form.updateFormWrapper(method='post' action='/inventory/update')
+      input(type='hidden' name='itemID' value=itemID)
+
+      label.updateFormLabel
+        div Name
+        input(type='text' name='name' value=itemName required)
+      label.updateFormLabel 
+        div Serial
+        input(type='text' name='serial' value=itemSerial minlength='9' maxlength='9' required)
+      label.updateFormLabel 
+        div Quantity  
+        input(type='number' name='quantity' value=itemQuantity required)
+      input(type='submit' value='Submit')

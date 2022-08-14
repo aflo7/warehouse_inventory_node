@@ -1,0 +1,68 @@
+extends layout 
+
+block content 
+  h1="Inventory Homepage"
+  p="- This website allows the user to CRUD items"
+  p="- Items belong to different bins"
+  p="- There are 3 BIN types (large items, small items, and trash items)"
+
+
+  div.binWrapper Bins
+
+    div.largeItemsWrapper 
+      div.itemTitleSpan Large Items
+      if largeBinItems
+        table.itemTable
+            tr 
+              th Name 
+              th Quantity 
+              th Serial
+            each item in largeBinItems
+              tr
+                td #{item.name}
+                td #{item.quantity}
+                td #{item.serialNumber}
+            else 
+              div.emptyBin This bin is empty 
+
+      a(href=process.env.PREFIX + 'inventory/newItem/large')
+        div.addItem ADD ITEM +
+
+    div.smallItemsWrapper 
+      div.itemTitleSpan Small Items
+      if smallBinItems
+        table.itemTable
+          tr 
+            th Name 
+            th Quantity 
+            th Serial
+          each item in smallBinItems
+            tr
+              td #{item.name}
+              td #{item.quantity}
+              td #{item.serialNumber}
+          else 
+            div.emptyBin This bin is empty 
+      a(href=process.env.PREFIX + 'inventory/newItem/small')
+        div.addItem ADD ITEM +
+
+    div.trashItemsWrapper 
+      div.itemTitleSpan Items
+      if trashBinItems
+        table.itemTable
+          tr 
+            th Name 
+            th Quantity 
+            th Serial
+            th Update
+          each item in trashBinItems
+            tr
+              td #{item.name}
+              td #{item.quantity}
+              td #{item.serialNumber}
+              td 
+                a(href=item.update) Update
+          else 
+            div.emptyBin This bin is empty 
+      a(href=process.env.PREFIX + 'inventory/newItem/trash')
+        div.addItem ADD ITEM +

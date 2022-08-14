@@ -1,0 +1,28 @@
+extends layout 
+block content 
+  h1 
+  | Add item to 
+  if bin == 'small'
+    span.smallBinTextSpan small 
+  else if bin == 'large'
+    span.largeBinTextSpan large 
+  else if bin == 'trash'
+    span.trashBinTextSpan trash    
+  | bin...
+
+
+
+  form.newItemFormWrapper(action='/inventory/newItem/' method='post')
+    input(type='hidden' name='bin' value=bin)
+    label.newItemLabel Name: 
+      input(type='text' name='name' required)
+
+    label.newItemLabel Serial: 
+      input(type='text' name='serial' required minlength='9' maxlength='9' placeholder='Must be 9 digits...') 
+
+    label.newItemLabel Quantity: 
+      input(type='number' name='quantity' required) 
+      
+    input.submitInput(type='submit')
+
+

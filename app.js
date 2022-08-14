@@ -13,7 +13,7 @@ const helmet = require('helmet');
 const devDatabase = `mongodb+srv://andres-owner:${process.env.ENCODED}@cluster0.bg92a.mongodb.net/warehouse_inventory?retryWrites=true&w=majority`
 var app = express()
 
-const mongoDB = process.env.MONGOURI || devDatabase
+const mongoDB = process.env.MONGODB_URI || process.env.MONGOURI
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
 
 var db = mongoose.connection
